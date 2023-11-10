@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <div>1111111</div>
+        <span>aaaa</span>
+    </div> -->
+
+    <div id="app">
+        <h2>当前计数：{{counter}}</h2>
+        <button @click='increment'>-1</button>
+        <button @click='decrement'>+1</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            // 此时，上方 app 元素中有其他的元素，如果这里写了 template，那么会用 template 中的内容覆盖，app 元素中本来有的东西，
+
+            // 如果这里没有 template 选项，会直接用 app 元素中的内容作为 template 
+            // template: `
+            //     <h2>当前计数：{{counter}}</h2>
+            //     <button @click='increment'>-1</button>
+            //     <button @click='decrement'>+1</button>
+            // `,
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increment: function () {
+                    console.log('-1 被点击了')
+                    this.counter--
+                },
+                decrement: function () {
+                    console.log('+1 被点击了')
+                    this.counter++
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+
+</html>

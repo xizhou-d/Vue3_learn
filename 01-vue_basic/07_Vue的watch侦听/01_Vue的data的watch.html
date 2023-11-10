@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <button @click="changeMessage">修改 message</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.',
+                    info: { name: 'xizhou', age: 18 }
+                }
+            },
+            methods: {
+                changeMessage() {
+                    this.message = 'Hello, tree'
+                    this.info = { name: 'dongzhou', age: 19 }
+                }
+            },
+            watch: {
+                // 1. watch 里面的监听函数有两个参数：newValue/oldValue
+                message(newValue, oldValue) {
+                    console.log('message 被修改了', newValue, oldValue)
+                },
+                info(newValue, oldValue) {
+                    // 2. 如果是对象类型，那么拿到的是代理对象
+                    // console.log('info 被修改了', newValue, oldValue)
+
+                    // 3. 拿到原生对象: 解构成一个新对象    使用 Vue.toRaw
+                    console.log({...newValue}, {...oldValue})
+                    console.log(Vue.toRaw(newValue), Vue.toRaw(oldValue))
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

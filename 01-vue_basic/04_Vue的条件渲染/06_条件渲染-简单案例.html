@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="imgshow = !imgshow">切换</button>
+        </div>
+        <img v-if="imgshow" src="https://game.gtimg.cn/images/yxzj/web201706/images/comm/floatwindow/wzry_qrcode.jpg" alt="">
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    imgshow: true
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html> 

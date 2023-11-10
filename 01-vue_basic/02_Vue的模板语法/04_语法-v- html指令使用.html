@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ content }}</h2>
+        <!-- 
+            ◼ 默认情况下，如果我们展示的内容本身是 html 的，那么vue并不会对其进行特殊的解析。 
+             如果我们希望这个内容被Vue可以解析出来，那么可以使用 v-html 来展示; 
+             v-html 会替换元素本身的文本节点
+        -->
+        <h2 v-html="content">sassad</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    content: '<span style="font-size: 30px; color: skyblue; ">span element.</span>'
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

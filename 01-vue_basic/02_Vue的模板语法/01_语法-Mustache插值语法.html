@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. 基本使用 -->
+        <h2>{{ message }}</h2>
+
+        <!-- 2. 表达式 -->
+        <h2>{{ counter * 2 }}</h2>
+        <h2>{{ info.split(' ') }}</h2>
+
+        <!-- 3. 三元运算符 -->
+        <h2>{{ age > 18 ? '成年人' : '未成年人'}}</h2>
+
+        <!-- 4. 这里不能写语句 -->
+        <!-- <h2>{{ const name = 'xizhou' }}</h2> -->
+         
+        <!-- 5. 调用 methods 中的函数 -->
+        <h2>{{ formatDate() }}</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.',
+                    counter: 0,
+                    info: 'my name is zhou.',
+                    age: 20
+                }
+            },
+            methods: {
+                formatDate() {
+                    return '2023-09-07'
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

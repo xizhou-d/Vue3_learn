@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- select 单选 -->
+        <select name="" id="" v-model="fruit">
+            <option v-for="item in allFruits" :value="item.value" :key="item.id">{{item.name}}</option>
+        </select>
+        <h2>{{fruit}}</h2>
+
+        <hr>
+
+        <!-- select 多选 -->
+        <select name="" id="" multiple size="3" v-model="fruits">
+            <option v-for="item in allFruits" :value="item.value" :key="item.id">{{item.name}}</option>
+        </select>
+        <h2>{{fruits}}</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    allFruits: [
+                        { value: 'apple', name: 'apple', id: 1},
+                        { value: 'banana', name: 'banana', id: 2},
+                        { value: 'orange', name: 'orange', id: 3}
+                    ],
+                    fruit: '',
+                    fruits: []
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

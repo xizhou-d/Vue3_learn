@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>当前计数：{{counter}}</h2>
+        <button @click="decrement">-1</button>
+        <button @click="increment">+1</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increment() {
+                    console.log('this', this)
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                },
+                // methods 中的方法不能使用 箭头函数 -> this 只指向 window 的
+                // increment: () => {
+                //     console.log('this', this)
+                // }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

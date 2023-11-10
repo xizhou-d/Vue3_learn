@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind 将一个对象的所有属性，绑定到元素上的所有属性， info对象会被拆解成div的各个属性 -->
+        <!-- v-bind 绑定对象，给组件传递参数 -->
+        <h2 name="xizhou" age='18' height='1.88'></h2>
+        <h2 v-bind="props">{{message}}</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.',
+                    props: { name: 'xizhou', age: 18, height: 1.88}
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

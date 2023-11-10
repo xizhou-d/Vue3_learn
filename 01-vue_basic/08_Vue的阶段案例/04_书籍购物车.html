@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .single {
+            width: 650px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .single .index {
+            width: 50px
+        }
+        .single div {
+            width: 150px;
+        }
+        .single .remove {
+            width: 50px
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <template v-if="books.length">
+            <div class="shopping_module">
+                <div class="head"></div>
+                <div class="single" v-for="(book, index) in books" :key="index" @click="geCurrentIndex(index)" :class="{active: currentIndex === index}">
+                    <div class="index">{{index + 1}}</div>
+                    <div class="name">{{book.name}}</div>
+                    <div class="publication_date">{{book.publication_date}}</div>
+                    <div class="price">{{formatPrice(book.price)}}</div>
+                    <div class="purchase_quantity">
+                        <button @click="decrement(index, book.purchase_quantity)">-</button>
+                        <span>&nbsp;{{ book.purchase_quantity }}&nbsp;</span>
+                        <button @click="increment(index)">+</button>
+                    </div>
+                    <button class="remove" @click="remove(index)">移除</button>
+                </div>
+                <div class="total">{{formatPrice(totalPrice)}}</div>
+            </div>
+        </template>
+        <template v-else>
+            <h1>购物车为空，请添加喜欢的书籍</h1>
+            <p>商场中有大量的 I T 类书籍，请选择添加学习，注意保护好自己的头发！</p>
+        </template>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    books: [
+                        { name: '《算法导论》', price: 85, publication_date: '2006-9', purchase_quantity: 1 },
+                        { name: '《UNIX编程艺术》', price: 59, publication_date: '2006-2', purchase_quantity: 1 },
+                        { name: '《编程珠玑》', price: 39, publication_date: '2008-10', purchase_quantity: 1 },
+                        { name: '《代码大全》', price: 128, publication_date: '2006-3', purchase_quantity: 1 }
+                    ],
+                    currentIndex: -1
+                }
+            },
+            computed: {
+                totalPrice() {
+                    return this.books.reduce((prevalue, item) => {
+                        return prevalue + item.price * item.purchase_quantity
+                    }, 0)
+                }
+            },
+            methods: {
+                formatPrice(price) {
+                    return '¥' + price
+                },
+                remove(index) { 
+                    this.books.splice(index, 1)
+                },
+                increment(index) {
+                    this.books[index].purchase_quantity++
+                },
+                decrement(index, current) {
+                    if (current === 1) return
+                    this.books[index].purchase_quantity--
+                },
+                geCurrentIndex(index) {
+                    console.log('index', index)
+                    this.currentIndex = index
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

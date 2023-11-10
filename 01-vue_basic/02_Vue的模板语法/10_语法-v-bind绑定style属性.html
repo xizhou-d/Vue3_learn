@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. 普通的 html 写法 -->
+        <h2 style="font-size: 30px; color: darkorchid">h2 element.</h2>
+        <!-- 2. style 中的某些值，来自 data 中 -->
+        <!-- 2.1 动态绑定 style，后面跟上 对象类型 -->
+        <h2 v-bind:style="{'font-size': '30px', color: fontColor}">h2 element.</h2>
+        <h2 v-bind:style="{fontSize: fontSize, color: fontColor}">h2 element.</h2>
+
+        <!-- 2.2 动态绑定属性，这个属性是一个对象 -->
+        <h2 :style="[objStyle, objStyle1]">h2 element.</h2>
+
+        <!-- 2.3 style 的数组语法 -->
+        <h2 :style="objStyle">h2 element.</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    fontColor: 'red',
+                    fontSize: '30px',
+                    objStyle: {
+                        fontSize: '30px',
+                        color: 'red'
+                    },
+                    objStyle1: {
+                        backgroundColor: 'skyBlue',
+                        color: 'green'
+                    }
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

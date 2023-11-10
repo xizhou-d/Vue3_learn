@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{fullName}}</h2>
+
+        <button @click="changeFullName">按钮</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    // 1. 姓名
+                    firstName: 'onename',
+                    lastName: 'twoname',
+                }
+            },
+            computed: {
+                // fullName() {
+                //     return this.firstName + ' ' + this.lastName
+                // },
+                fullName: {
+                    get: function() {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(value) {
+                        const names = value.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[1]
+                    }
+                }
+            },
+            methods: {
+                changeFullName() {
+                    this.fullName = 'kobe buryne'
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

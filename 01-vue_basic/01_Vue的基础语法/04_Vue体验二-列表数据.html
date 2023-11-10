@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: `
+                <h2>电影列表</h2>
+                <ul>
+                    <li v-for="item in movies">{{item}}</li>
+                </ul>
+            `,
+            data: function() {
+                return {
+                    message: '',
+                    movies: ['大话西游', "2012", '水世界', '阿凡达']
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>

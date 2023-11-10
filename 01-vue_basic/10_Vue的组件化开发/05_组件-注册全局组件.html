@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <product-item></product-item>
+        <home-nav></home-nav>
+    </div>
+    <template id="product">
+        <div class='product'>
+            <h2>{{title}}</h2>
+            <div>商品图片</div>
+            <div>商品价格：<span>¥ {{price}}</span></div>
+            <button @click="Collect">收藏</button>
+        </div>
+    </template>
+    <template id="nav">
+        <product-item></product-item>
+        <div class="home-nav">
+            导航栏
+        </div>
+    </template>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        // 1. 组件打算在哪里使用
+        const App = Vue.createApp({
+            components: {
+                ProductItem: {
+                    template: '#product',
+                    data() {
+                        return {
+                            title: '我是商品 item',
+                            price: 9.9
+                        }
+                    }
+                },
+                HomeNav: {
+                    template: '#nav',
+                }
+            },
+            data() {
+                return {
+                    message: 'Hello Vue.'
+                }
+            }, 
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

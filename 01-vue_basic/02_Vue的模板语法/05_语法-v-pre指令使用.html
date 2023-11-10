@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ message }}</h2>
+        <h2>{{ counter }}</h2>
+        <!-- vue 发现使用了 {{}} 之后，会认为是插值表达式；如果想不解析单纯的显示 {{}}，使用 v-pre -->
+        <h2 v-pre>{{}}</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.',
+                    counter: 0
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

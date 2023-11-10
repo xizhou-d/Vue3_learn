@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 基本绑定 class -->
+        <h2 :class="classes">Hello world.</h2>
+
+        <!-- 2.1. 动态 class 可以写对象语法   key: value  value 是 bool 值，如果为 true，那么前边的 key 就会被添加到 class 里面 -->
+        <!-- <button :class="isActive ? 'active' : ''" @click="btnClick">切换按钮</button> -->
+
+        <!-- 2.2. 动态绑定 class 对象语法  -->
+        <button :class="{active: isActive}" @click="btnClick">切换按钮</button>
+
+        <!-- 2.3 对象语法的多个键值对 -->
+        <button :class="{active: isActive, big: true, aaa: false}" @click="btnClick">切换按钮</button>
+
+        <!-- 2.4 动态绑定的 class 可以和普通的 class 并列使用, 两者会合并使用 -->
+        <button class="abc cba" :class="{active: isActive, big: true, aaa: false}" @click="btnClick">切换按钮</button>
+
+        <!-- 2.5 动态绑定的 classes 太长的话，可以提取到外面去 -->
+        <button :class="getClassed()" @click="btnClick">切换按钮</button>
+
+        <!-- 2.6 动态 class 可以使用数组语法 -->
+        <button :class="['abc', 'cba', 'nba']" @click="btnClick">切换按钮</button>
+        <button :class="['abc', 'cba', className]" @click="btnClick">切换按钮</button>
+        <button :class="['abc', 'cba', isActive ? 'active' : '']" @click="btnClick">切换按钮</button>
+        <button :class="['abc', 'cba', { active: isActive }]" @click="btnClick">切换按钮</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    classes: 'abc cba nba',
+                    isActive: false,
+                    className: 'xizhou'
+                }
+            },
+            methods: {
+                btnClick() {
+                    this.isActive = !this.isActive
+                },
+                getClassed() {
+                    return {active: this.isActive, big: true, aaa: false}
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

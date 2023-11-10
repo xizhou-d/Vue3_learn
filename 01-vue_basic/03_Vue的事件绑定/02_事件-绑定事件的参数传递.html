@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. 默认传递的参数： event -->
+        <button @click="divClick">按钮1</button>
+
+        <!-- 2. 明确的参数：在 react 中这种方式会被直接执行，但是 vue 对这种方式做了特殊处理，不会直接执行，参数会被传递给 methods 中的方法里面 -->
+        <button @click="divClick1('xizhou', 18)">按钮1</button>
+
+        <!-- 3. 自己的参数和 event 对象 -->
+        <!-- 在模版中想要明确的获取 event 对象：必须使用 $event -->
+        <button @click="divClick2('xizhou', 18, $event)">按钮1</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    
+                }
+            },
+            methods: {
+                // 1. 默认参数，event 对象
+                // 总结：如果在绑定事件的时候，没有传递任何的参数，那么 event 对象就会默认被传递进来
+                divClick(event) {
+                    console.log('divClick', event)
+                },
+                // 2. 明确参数
+                divClick1(name, age) {
+                    console.log('divClick1', name, age)
+                },
+                // 3. 明确参数和 event 参数
+                divClick2(name, age, event) {
+                    console.log('divClick2', name, age, event)
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

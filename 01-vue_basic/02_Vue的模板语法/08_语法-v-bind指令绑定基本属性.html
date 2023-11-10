@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind 如果一个元素的属性是动态变化的，那么就需要用 v-bind 来绑定一个动态变化的值，或者向另一个组件传递 props 值 -->
+        <!-- v-bind 语法糖  ->  : -->
+        <div>
+            <button @click="changeImgUrl">切换图片</button>
+        </div>
+        <!-- 1. 绑定 img 的 src 属性 -->
+        <!-- <img :src="showImgUrl" alt=""> -->
+        <img v-bind:src="showImgUrl" alt="">
+
+        <!-- 2. 绑定 a 的 href 属性 -->
+        <a :href="href">百度一下</a>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    imgUrl1: 'https://img.dpm.org.cn/Uploads/Picture/2023/07/30/s64c65541ea0e3.jpg',
+                    imgUrl2: 'https://img.dpm.org.cn/Uploads/Picture/2023/07/30/s64c6545c12498.jpg',
+                    showImgUrl: 'https://img.dpm.org.cn/Uploads/Picture/2023/07/30/s64c65541ea0e3.jpg',
+                    href: 'http://www.baidu.com'
+                }
+            },
+            methods: {
+                changeImgUrl() {
+                    this.showImgUrl = this.showImgUrl === this.imgUrl1 ? this.imgUrl2 : this.imgUrl1
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

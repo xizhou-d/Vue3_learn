@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. checkbox 单选框: 绑定到属性中的值是一个 boolean 类型  -->
+        <!-- 单选框不需要有 value， 没有意义，因为存起来的值是 boolean -->
+        <label for="agree">
+            <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+        </label>
+        <h1>{{isAgree}}</h1>
+
+        <hr>
+
+        <!-- 2. checkbox 多选框 -->
+        <!-- 注意：多选框中，必须明确的绑定一个 value值, hobboies 数组中收集了选中项的 value  [ "sing", "dance", "rap", "basketball" ]  -->
+        <div class="hobbies">
+            <label for="sing">
+                <input type="checkbox" id="sing" v-model="hobbies" value="sing"> sing
+            </label>
+            <label for="dance">
+                <input type="checkbox" id="dance" v-model="hobbies" value="dance"> dance
+            </label>
+            <label for="rap">
+                <input type="checkbox" id="rap" v-model="hobbies" value="rap"> rap
+            </label>
+            <label for="basketball">
+                <input type="checkbox" id="basketball" v-model="hobbies" value="basketball"> basketball
+            </label>
+            <h2>{{hobbies}}</h2>
+        </div>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    isAgree: false,
+                    hobbies: []
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

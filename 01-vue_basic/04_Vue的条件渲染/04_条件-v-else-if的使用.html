@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <h2 v-if="score > 90">优秀</h2>
+       <h2 v-else-if="score > 80">良好</h2>
+       <h2 v-else-if="score > 60">及格</h2>
+       <h2 v-else="score < 60">不及格</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    score: 89
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html> 

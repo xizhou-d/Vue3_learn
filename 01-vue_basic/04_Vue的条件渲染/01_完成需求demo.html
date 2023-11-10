@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul v-if="names.length > 0">
+            <li v-for="item in names">{{item}}</li>
+        </ul>
+
+        <h2 v-else>当前 names 没有数据，请求获取数据后展示</h2>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    // names: ['aaa', 'bbb', 'ccc'],
+                    names: ['aaa']
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html> 

@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: greenyellow;
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. 基本写法 -->
+        <div class="box" v-on:click="divClick" ></div>
+        <!-- 2. 语法糖 -->
+        <div class="box" @click="divClick" ></div>
+        <!-- 3. 绑定的方法位置也可以写成一个表达式（不常用） -->
+        <button @click="counter++">+1</button>
+        <h2>{{counter}}</h2>
+        <!-- 4. 绑定其他事件  -->
+        <div class="box" @mousemove="handleMouseMove"></div>
+        <!-- 5. 绑定多个事件 -->
+        <div class="box" @click="divClick" @mousemove="handleMouseMove"></div>
+        <div class="box" @="{click: divClick, mousemove: handleMouseMove}"></div>
+    </div>
+    <script src="../lib/Vue.js"></script> 
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                divClick() {
+                    console.log('div 被点击了')
+                },
+                handleMouseMove() {
+                    console.log('mousemove 被触发了')
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

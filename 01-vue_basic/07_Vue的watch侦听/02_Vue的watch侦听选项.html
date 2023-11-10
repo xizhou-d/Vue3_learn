@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 在模版中是深度监听，即使是仅仅修改了对象的一个属性的值，这里一样可以响应修改 -->
+        <h2>{{info.name}}</h2>
+        <button @click="changeInfo">修改info</button>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.',
+                    info: { name: 'xizhou', age: 18 }
+                }
+            },
+            methods: {
+                changeInfo() {
+                    // 1. 创建一个新对象赋值个 message
+                    // this。info = { name: 'dongzhou', age: 19 }
+                    this.info.name = 'dongzhou'
+                }
+            },
+            // 默认 watch 不会进行深度监听
+            watch: {
+                // 函数形式不会进行深度监听
+                // info(newValue, oldValue) {
+                //     console.log('info 被修改了')
+                // }, 
+                // 对象形式可以进行深度监听
+                info: {
+                    handler(newValue, oldValue) {
+                        console.log('info 被修改了', newValue, oldValue)
+                        // 如果不是直接赋值一个新的对象，因为修改的是对象中的属性，那么打印的 newValue， oldValue 是一个对象
+                        console.log(newValue == oldValue)
+                    },
+                    // 这里不加 deep 属性，跟上面的写法等效，加了 deep 会进行深度监听
+                    deep: true,
+                    // 第一次渲染的时候直接执行一次监听器
+                    immediate: true
+                },
+                // 监听某一个属性
+                "info.name": function() {
+                    console.log('info 中的 name 属性被修改了')
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

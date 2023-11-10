@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            background-color: green;
+            margin-bottom: 10px;
+        }
+        .item h3 {
+            color: skyblue
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="movie in movies">{{movie}}</li>
+        </ul>
+        <ul>
+            <li v-for="(movie, index) in movies">{{index + 1}}-{{movie}}</li>
+        </ul>
+
+        <!-- 遍历复杂数据 -->
+        <h2>商品列表</h2>
+        <div class="item" v-for="item in products">
+            <h3>商品：{{item.name}}</h3>
+            <span>价格：{{item.price}}</span>
+            <span>秒杀：{{item.desc}}</span>
+        </div>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    movies: ['大话西游', '东邪西毒', '星际穿越', '流浪地球'],
+                    products: [
+                        { id: 0, name: 'macbook', price: 8000, desc: '8000秒杀，快来抢购'},
+                        { id: 1, name: 'macbook air', price: 5000, desc: '5000秒杀，快来抢购'},
+                        { id: 2, name: 'huawei', price: 7000, desc: '7000秒杀，快来抢购'},
+                        { id: 3, name: 'xiaomi', price: 4000, desc: '4000秒杀，快来抢购'}
+                    ]
+                }
+            },
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+</html>

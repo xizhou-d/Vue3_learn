@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: greenyellow;
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="box" @click="divClick">
+            <!-- 1. 阻止冒泡 -->
+            <button @click.stop="btnCLick">按钮</button>
+            <a href="">a link</a>
+        </div>
+    </div>
+    <script src="../lib/Vue.js"></script>
+    <script>
+        const App = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue.'
+                }
+            },
+            methods: {
+                btnCLick(event) {
+                    // 阻止冒泡
+                    // event.stopPropagation() 
+                    console.log('btnCLick')
+                },
+                divClick() {
+                    console.log('divClick')
+                }
+            }
+        })
+
+        App.mount('#app')
+    </script>
+</body>
+
+</html>
