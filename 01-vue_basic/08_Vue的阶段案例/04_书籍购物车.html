@@ -76,6 +76,8 @@
                 remove(index) { 
                     this.books.splice(index, 1)
                 },
+                // 深层响应性​
+                // 在 Vue 中，默认情况下，状态是深度响应的。这意味着当改变嵌套对象或数组时，这些变化也会被检测到
                 increment(index) {
                     this.books[index].purchase_quantity++
                 },

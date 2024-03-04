@@ -15,6 +15,7 @@
         </template> -->
 
         <!-- 2. 动态组件实现这种效果 -->
+        <!-- is 中的组件需要来自两个地方：1. 全局注册的组件； 2. 局部注册的组件 -->
         <component 
             :is="tabs[currentIndex]"
             name="xizhou"

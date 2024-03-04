@@ -31,7 +31,7 @@
                 },
                 info(newValue, oldValue) {
                     // 2. 如果是对象类型，那么拿到的是代理对象
-                    // console.log('info 被修改了', newValue, oldValue)
+                    console.log('info 被修改了', newValue, oldValue)
 
                     // 3. 拿到原生对象: 解构成一个新对象    使用 Vue.toRaw
                     console.log({...newValue}, {...oldValue})

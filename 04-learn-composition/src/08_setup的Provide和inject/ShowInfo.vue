@@ -13,7 +13,7 @@
             const name = inject('name')
             const age = inject('age')
             // setup 中 inject 接收两个参数，第二个参数是默认值，如果没有从父组件传过来，那么第二个参数就会生效
-            const height = inject(1.88)
+            const height = inject('height', 1.88)
 
             return {
                 name,

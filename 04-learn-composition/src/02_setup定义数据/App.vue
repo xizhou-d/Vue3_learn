@@ -51,7 +51,9 @@
             }
 
             // 2.2 ref: 定义简单类型的数据（也可以定义复杂类型的数据）
-            let counter = ref(0)
+            //  在模板中引入ref的值时，Vue会自动帮助我们进行解包操作，所以我们并不需要在模板中通过 ref.value 的方式来使用；
+            //  但是在 setup 函数内部，它依然是一个 ref引用， 所以对其进行操作时，我们依然需要使用 ref.value的方式；
+            const counter = ref(0)
             function changeCounter() {
                 counter.value++
             }

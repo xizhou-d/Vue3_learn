@@ -2,7 +2,7 @@
     <div class="app">
         <!-- 1. input 的 v-model -->
         <!-- <input type="text" v-model="message">
-        <input type="text" :message="message" @input="message = $event.target.value">
+        <input type="text" :value="message" @input="message = $event.target.value">
 
         <h2>{{message}}</h2> -->
 

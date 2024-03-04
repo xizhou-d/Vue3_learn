@@ -1,6 +1,6 @@
 <template>
     <div>AppContent</div>
-    <ShowMessage title="屈原" content="离骚">
+    <ShowMessage title="屈原" content="lisao">
         <button>button Element.</button>
     </ShowMessage>
 

@@ -9,7 +9,7 @@
 <body>
     <div id="app">
         <!-- v-memo 可以让 v-memo 所在的元素以及它所有的子树是否更新都要依赖于 v-memo 的数组中指定的数据是否发生改变  -->
-        <div v-memo="[name]">
+        <div v-memo="[name, height]">
             <h2>姓名：{{name}}</h2>
             <h2>年龄：{{age}}</h2>
             <h2>身高：{{height}}</h2>
@@ -29,7 +29,8 @@
             methods: {
                 updateInfo() {
                     this.age = 19
-                    this.name = 'dongzhou'
+                    // this.name = 'dongzhou'
+                    this.height = 190
                 }
             }
         })

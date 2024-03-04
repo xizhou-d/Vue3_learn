@@ -10,7 +10,7 @@
         <!-- 使用 readonly 的数据 -->
         <h2>readOnlyInfo: {{readOnlyInfo}}</h2>
         <!-- 代码无效，报警告 -->
-        <!-- <button @click="readOnlyInfo.name = 'daming'">ShowInfo按钮</button> -->
+        <button @click="readOnlyInfo.name = 'daming'">ShowInfo按钮</button>
         <!-- 正确的做法 -->
         <button @click="changeReadOnlyInfo">ReadOnlyInfo按钮</button>
     </div>

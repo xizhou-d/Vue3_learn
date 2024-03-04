@@ -15,7 +15,7 @@
         <h2 :class="classes">Hello world.</h2>
 
         <!-- 2.1. 动态 class 可以写对象语法   key: value  value 是 bool 值，如果为 true，那么前边的 key 就会被添加到 class 里面 -->
-        <!-- <button :class="isActive ? 'active' : ''" @click="btnClick">切换按钮</button> -->
+        <button :class="isActive ? 'active' : ''" @click="btnClick">切换按钮</button>
 
         <!-- 2.2. 动态绑定 class 对象语法  -->
         <button :class="{active: isActive}" @click="btnClick">切换按钮</button>

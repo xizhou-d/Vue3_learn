@@ -7,13 +7,14 @@
     <show-info name="B" :age="19" :height="190"/>
     <!-- 展示 C 的个人信息 -->
     <show-info :age="18"/>
+    <Test name="D" height="'189"></Test>
 </template>
 
 <script>
     import ShowInfo from './ShowInfo.vue'
     export default {
         components: {
-            ShowInfo
+            ShowInfo,
         }
     }
 </script>

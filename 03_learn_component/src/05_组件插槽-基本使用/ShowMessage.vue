@@ -20,6 +20,9 @@
                 type: String,
                 default: ''
             }
+        },
+        mounted() {
+            console.log('$slots', this.$slots)
         }
     }
 </script>

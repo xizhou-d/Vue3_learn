@@ -15,6 +15,10 @@
 
         <hr>
         <show-info :name="name" :age="age"></show-info>
+
+        <hr>
+        <div v-for="item in musics">{{item}}</div>
+        <button @click="musicsMod">修改musics</button>
     </div>
 </template>
 
@@ -53,6 +57,9 @@
                 const serveMusics = ['A', 'B', 'C']
                 musics.value = serveMusics
             })
+            function musicsMod() {
+                musics.value.push('D')
+            }
 
             const name = ref('xizhou')
             const age = ref(28)
@@ -62,7 +69,9 @@
                 username,
                 password,
                 name,
-                age
+                age,
+                musics,
+                musicsMod
             }
         }
     }

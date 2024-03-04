@@ -22,6 +22,8 @@
             return {
                 name: 'xizhou',
                 age: 28,
+                // message: this.message,
+                // 如果provide中的数据可以变成响应式的，需要用 computed 包裹一下 
                 message: computed(() => this.message)
             }
         }
