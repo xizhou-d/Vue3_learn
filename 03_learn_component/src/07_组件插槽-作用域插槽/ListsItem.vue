@@ -1,6 +1,7 @@
 <template>
     <div class="lists">
         <div :class="{list: true, active: index === activeIndex }" v-for="(item, index) in lists" @click="handleClick(index)" :key="item">
+            <!-- slot 标签上面绑定的 :item="item" 可以回传到 APP.vue 中 ListsItem 组件的插槽中 -->
             <slot :item="item">
                 <span>{{item}}</span>
             </slot>
