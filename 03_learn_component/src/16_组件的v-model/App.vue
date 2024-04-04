@@ -9,6 +9,7 @@
         <!-- 2. 组件的 v-model： 默认 modelValue -->
         <!-- <counter v-model="appcounter"></counter> -->
         <!-- 等同于下面写法: 1. 绑定 modelValue; 2. 监听事件：v-on:update:modelValue -->
+        <!-- ⚠️ 这里 update:modelValue 是一个事件名称，容易引起困惑 -->
         <counter v-bind:modelValue="appcounter" @update:modelValue="appcounter = $event"></counter>
 
         <hr>
