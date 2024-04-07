@@ -2,6 +2,7 @@
     <div>AppContent</div>
     <ShowMessage title="屈原" content="lisao">
         <button>button Element.</button>
+        <div>第二个 default</div>
     </ShowMessage>
 
     <ShowMessage title="屈原" content="离骚">
