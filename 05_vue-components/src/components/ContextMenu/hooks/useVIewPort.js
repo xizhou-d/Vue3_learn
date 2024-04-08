@@ -1,7 +1,12 @@
 import { ref } from 'vue'
 
-const vw = ref(window.document.clientWidth)
-const vh = ref(window.document.clientHeight)
+let vw = ref(document.documentElement.clientWidth)
+let vh = ref(document.documentElement.clientHeight)
+
+window.addEventListener('resize', () => {
+    vw = ref(window.document.clientWidth)
+    vh = ref(window.document.clientHeight)
+})
 
 export function useViewPort() {
     return {

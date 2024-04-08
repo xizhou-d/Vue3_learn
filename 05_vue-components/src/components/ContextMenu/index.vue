@@ -3,7 +3,7 @@
         <slot></slot>
         <Teleport to="body">
             <Transition @before-enter="handleBeforeEnter" @enter="handleEnter" @after-enter="handleAfterEnter">
-                <div v-if="showMenu" class="context-menu" @click="handleClick" :style="{ left: posX + 'px', top: posY + 'px' }">
+                <div v-if="showMenu" v-resize-ob="handleSizeChange" class="context-menu" @click="handleClick" :style="{ left: pos.posX + 'px', top: pos.posY + 'px' }">
                     <div class="context-menu-item" v-for="item in menu" :key="item.label">{{ item.label }}</div>
                 </div>
             </Transition>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { useContextMenu } from './hooks/useContextMenu'
     import { useViewPort } from './hooks/useVIewPort'
 
@@ -28,7 +28,6 @@
     const emit = defineEmits(['select'])
 
     const handleClick = (e) => {
-        console.log('e', e.target.innerHTML)
         showMenu.value = false
         emit('select', e.target.innerHTML)
     }
@@ -57,15 +56,30 @@
 
     // 处理邮件菜单超出视口的问题
     const { vw, vh } = useViewPort()
+
     const pos = computed(() => {
-        const posX = x.value
-        const posY = y.value
+        let posX = x.value
+        let posY = y.value
+
+        if (x.value > vw.value - w.value) {
+            posX = x.value - w.value
+        }
+        if (y.value > vh.value - h.value) {
+            posY = y.value - h.value
+        }
 
         return {
             posX,
             posY
         }
     })
+
+    const w = ref(0)
+    const h = ref(0)
+    const handleSizeChange = (e) => {
+        w.value = e.width
+        h.value = e.height
+    }
 </script>
 
 <style scoped>

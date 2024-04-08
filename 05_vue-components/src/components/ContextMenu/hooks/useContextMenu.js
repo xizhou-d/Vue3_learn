@@ -6,7 +6,6 @@ export function useContextMenu(containerRef) {
     const showMenu = ref(false)
 
     const handleContextMenu = (e) => {
-        console.log('sdlkfsldkfslkdfdslfjlsdk', e.target)
         e.preventDefault()
         e.stopPropagation()
         x.value = e.clientX
@@ -20,7 +19,6 @@ export function useContextMenu(containerRef) {
 
     onMounted(() => {
         const container = containerRef.value
-
         container.addEventListener('contextmenu', handleContextMenu)
         // 这里要用事件捕获，不能用事件冒泡，如果在父标签上加了一个 阻止冒泡的事件，那么这个 菜单就关不掉了。但是 捕获阶段是不能被阻止的
         window.addEventListener('click', closeMenu, true)
@@ -31,7 +29,7 @@ export function useContextMenu(containerRef) {
     onUnmounted(() => {
         const container = containerRef.value
 
-        container.removeEventListener('contextmenu', handleContextMenu)
+        container && container.removeEventListener('contextmenu', handleContextMenu)
         window.removeEventListener('click', closeMenu)
         window.removeEventListener('contextmenu', closeMenu)
     })
