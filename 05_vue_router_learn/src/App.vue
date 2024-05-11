@@ -14,6 +14,8 @@
             <!-- 默认被点击的 link 会自动添加一个类名 router-link-active，如果想换个名字可以使用 active-class -->
             <router-link to="/home" active-class="active">首页</router-link>
             <router-link to="/about" active-class="active">关于</router-link>
+            <router-link to="/user/123">用户123</router-link>
+            <router-link to="/user/345">用户345</router-link>
         </div>
         <router-view></router-view>
     </div>
